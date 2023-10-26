@@ -35,7 +35,7 @@ Only one valid answer exists.
 Follow-up: Can you come up with an algorithm that is less than O(n2) time complexity?
 
 ************************************************************************************/
-
+// O(n^2)
 class Solution {
     public int[] twoSum(int[] nums, int target) {
         int ans[] = new int[2];
@@ -53,3 +53,22 @@ class Solution {
     }
 }
 
+// O(n) using hashmap
+class Solution {
+    public int[] twoSum(int[] nums, int target) {
+        HashMap<Integer,Integer> map = new HashMap<Integer,Integer>();
+        int n = nums.length;
+        for(int i=0;i<n;i++){
+            map.put(nums[i],i);
+        }
+        int ans[] = new int[2];
+        for(int i=0;i<n;i++){
+            if(map.containsKey(target-nums[i]) && i!=map.get(target-nums[i])){
+                ans[0] = i;
+                ans[1] = map.get(target-nums[i]);
+                break;
+            }
+        }
+        return ans;
+    }
+}
